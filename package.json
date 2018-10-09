@@ -1,0 +1,23 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "con-class.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teropaj/weather.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teropaj/weather/issues"
+  },
+  "homepage": "https://github.com/teropaj/weather#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.5.2"
+  }
+}
