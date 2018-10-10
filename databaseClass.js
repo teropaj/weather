@@ -29,7 +29,7 @@ class Database {
 
   }
 
-  pullSensorData(){
+  pullSensorData(data){
     // let sql = `SELECT * FROM sensor_data`;
     // console.log(sql);
     // con.query("SELECT * FROM sensor_data", function(error, results,fields){
@@ -41,7 +41,7 @@ class Database {
     //  this.con.connect();
 
       return new Promise ( (resolve, reject) => {
-            this.con.query("SELECT * FROM sensor_data", function (error, result) {
+            this.con.query(data, function (error, result) {
               if (error) reject (error);
               else if (result.length === 0) resolve("No records found")
               else {

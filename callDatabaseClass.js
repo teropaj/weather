@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.get('/', (req,res)=>res.sendFile(path.join(__dirname,'index.html')));
 app.get('/jee.html', (req,res)=>res.sendFile(path.join(__dirname,'jee.html')));
+app.post('/station_managers',(req,res)=>managers(req,res));
 app.post('/weather',urlencodedParser,(req,res)=>{
   if(!req.body) {
     return res.sendStatus(400);
@@ -46,11 +47,20 @@ server.listen(port, host ,()=>
 
 var database= new Database();
 database.connect();
-database.pullSensorData().then(results => {
+database.pullSensorData("SELECT * FROM sensor_data").then(results => {
   data=results;
   //console.log(results);
   console.log(data);
 });
 
-database.endDatabase();
+//database.endDatabase();
 //console.log(results);
+function managers(req,res){
+  //database.connect();
+  database.pullSensorData('select password from station_managers where login="tero"').then(results => {
+    //res.send(results);
+    res.send(results);
+  });
+} //functioni ends
+
+//"SELECT * FROM sensor_data"}
