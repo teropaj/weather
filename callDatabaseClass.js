@@ -16,7 +16,7 @@ var data =[];
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname,'public')));
 
-app.get('/pulldata', (req,res)=>res.json(data))
+app.get('/station_managers',(req,res)=>managers(req,res));
 app.get('/', (req,res)=>res.sendFile(path.join(__dirname,'index.html')));
 app.get('/jee.html', (req,res)=>res.sendFile(path.join(__dirname,'jee.html')));
 app.post('/station_managers',(req,res)=>managers(req,res));
@@ -50,11 +50,16 @@ server.listen(port, host ,()=>
 
 var database= new Database();
 database.connect();
-database.pullSensorData("SELECT * FROM sensor_data").then(results => {
-  data=results;
-  //console.log(results);
-  console.log(data);
-});
+pullSensorData();
+
+function pullSensorData(){
+    database.pullSensorData("SELECT * FROM sensor_data").then(results => {
+      data=results;
+      //console.log(results);
+      console.log(data);
+      res.json(data)
+    });
+}
 
 //database.endDatabase();
 //console.log(results);
