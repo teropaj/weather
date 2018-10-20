@@ -9,13 +9,14 @@ const urlencodedParser=bodyParser.urlencoded({extended:false});
 
 const server=require('http').Server(app);
 
-const port=process.env.PORT || 3000;
+const port=process.env.PORT || 5000;
 const host=process.env.HOST || 'localhost';
 var data =[];
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname,'public')));
 
+app.get('/pulldata', (req,res)=>res.json(data))
 app.get('/', (req,res)=>res.sendFile(path.join(__dirname,'index.html')));
 app.get('/jee.html', (req,res)=>res.sendFile(path.join(__dirname,'jee.html')));
 app.post('/station_managers',(req,res)=>managers(req,res));

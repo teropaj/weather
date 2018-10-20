@@ -21,7 +21,7 @@ class Database {
       host: "localhost",
       user: "weather",
       password: "password",
-      database: "WeathereService"
+      database: "weather"
     });
       this.con.connect();
 
