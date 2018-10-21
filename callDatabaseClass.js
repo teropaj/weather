@@ -57,7 +57,7 @@ function pullSensorData(){
       data=results;
       //console.log(results);
       console.log(data);
-      res.json(data)
+      //res.json(data)
     });
 }
 

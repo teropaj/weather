@@ -4,14 +4,24 @@ import './App.css';
 
 class App extends Component {
 
-  state = {
-      password: 'init'
-    };
+  constructor() {
 
+  super()
+  this.state = {
+      password: 'init',
+      joo:'jee',
+      vallue:'jojo',
+
+    };
+    this.handleChange = this.handleChange.bind(this);
+}
     componentDidMount() {
       console.log('ComponenDidMount')
       this.callApi()
-        .then(res => {console.log('password '+res[0].password);this.setState({ password: res[0].password })})
+        .then(res => {//console.log('password '+res[0].password)
+        this.setState({ password: res[0].password });
+      console.log(res); //EI TOIMI EI TOIMI
+    })
         .catch(err => console.log(err));
     }
 
@@ -23,12 +33,24 @@ class App extends Component {
       console.log(body)
       return body;
     };
+    handleChange(event) {
+    this.setState({value: event.target.vallue});
+  }
 
   render() {
     return (
-      <div  >
-
+      <div>
+         <h1>WEATHER</h1>
+         <p>{this.state.joo}</p>
          <p>{this.state.password}</p>
+
+         <form>
+  <label>
+    Name:
+    <input type="text" value={this.state.vallue} onChange={this.handleChange} />
+  </label>
+  <input type="submit" value="Submit" />
+</form>
       </div>
     );
   }
